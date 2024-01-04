@@ -1,12 +1,11 @@
 package fr.epsi.b32324c1;
 
 public class MomentDeLaJournee {
-    public static MomentDeLaJournée Matin = new MomentDeLaJournée("Matin");
-    public static MomentDeLaJournée Inconnu = new MomentDeLaJournée("Inconnu");
+    public static MomentDeLaJournee Matin = new MomentDeLaJournee("Matin");
 
     private final String representation;
 
-    private MomentDeLaJournée(String label){
+    private MomentDeLaJournee(String label){
         this.representation = label;
     }
 

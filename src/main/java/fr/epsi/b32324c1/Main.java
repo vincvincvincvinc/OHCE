@@ -5,10 +5,10 @@ public class Main {
         ConsoleApp.start();
 
         LangueInterface english = new LangueAnglaise("morning");
-        MomentDeLaJournée morning = MomentDeLaJournée.Matin;
+        MomentDeLaJournee morning = MomentDeLaJournee.Matin;
 
-        VérificationPalindrome verifier = new VérificationPalindrome(english, morning);
-        System.out.println(verifier.Vérifier("level"));
+        VerificationPalindrome verifier = new VerificationPalindrome(english, morning);
+        System.out.println(verifier.verifier("level"));
     }
 
 }

@@ -2,14 +2,14 @@ package fr.epsi.b32324c1;
 
 public class VerificationPalindrome {
     private final LangueInterface langue;
-    private final MomentDeLaJournée moment;
+    private final MomentDeLaJournee moment;
 
-    public VérificationPalindrome(LangueInterface langue, MomentDeLaJournée moment) {
+    public VerificationPalindrome(LangueInterface langue, MomentDeLaJournee moment) {
         this.langue = langue;
         this.moment = moment;
     }
 
-    public String Vérifier(String chaîne) {
+    public String verifier(String chaîne) {
         String miroir = new StringBuilder(chaîne)
                 .reverse()
                 .toString();

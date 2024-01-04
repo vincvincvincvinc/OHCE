@@ -20,7 +20,7 @@ public class ConsoleApp {
             language = new LangueLituanienne(getTimeOfDay());
         }
 
-        VérificationPalindrome verifier = new VérificationPalindrome(language, MomentDeLaJournée.Matin);
+        VerificationPalindrome verifier = new VerificationPalindrome(language, MomentDeLaJournee.Matin);
 
         saluer(language);
 
@@ -33,7 +33,7 @@ public class ConsoleApp {
                 break;
             }
 
-            String result = verifier.Vérifier(input);
+            String result = verifier.verifier(input);
             System.out.println(result);
         }
 
@@ -55,6 +55,8 @@ public class ConsoleApp {
     }
 
     public static void start() {
+        System.out.println("Program started...");
     }
+
 }
 
