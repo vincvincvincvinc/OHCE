@@ -1,6 +1,8 @@
 package fr.epsi.b32324c1;
 
 import java.util.Scanner;
+import java.time.LocalTime;
+
 
 public class ConsoleApp {
 
@@ -57,12 +59,39 @@ public class ConsoleApp {
         }
     }
 
+    // new method choose the time of the day
+
+    private static MomentDeLaJournee choisirTimeOfDay() {
+        LocalTime currentTime = LocalTime.now();
+
+        if (currentTime.isAfter(LocalTime.of(6,- 0)) && currentTime.isBefore(LocalTime.of(12, 0))) {
+            return MomentDeLaJournee.Matin;
+        } else if (currentTime.isAfter(LocalTime.of(12, 0)) && currentTime.isBefore(LocalTime.of(18, 0))) {
+            return MomentDeLaJournee.ApresMidi;
+        } else {
+            return MomentDeLaJournee.Soir;
+        }
+    }
+
+    // old method - choose time of the day - pre-programmed
+    /*
     private static MomentDeLaJournee choisirTimeOfDay() {
         return MomentDeLaJournee.Matin;
     }
+    */
+
 
     private static String getTimeOfDay() {
-        return "morning";
+        LocalTime currentTime = LocalTime.now();
+
+        if (currentTime.isAfter(LocalTime.of(6, 0)) && currentTime.isBefore(LocalTime.of(12, 0))) {
+            return "morning";
+        } else if (currentTime.isAfter(LocalTime.of(12,0)) && currentTime.isBefore(LocalTime.of(18, 0))) {
+            return "afternoon";
+        } else {
+            return "evening";
+        }
+
     }
 }
 
