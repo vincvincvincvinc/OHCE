@@ -15,7 +15,6 @@ public class VerificationPalindrome {
                 .toString();
 
         StringBuilder resultBuilder = new StringBuilder();
-        resultBuilder.append(this.langue.Saluer());
         resultBuilder.append(System.lineSeparator());
         resultBuilder.append(miroir);
         resultBuilder.append(System.lineSeparator());
@@ -25,8 +24,12 @@ public class VerificationPalindrome {
             resultBuilder.append(System.lineSeparator());
         }
 
-        resultBuilder.append(this.langue.DireAuRevoir());
         return resultBuilder.toString();
     }
+
+    public String direAuRevoir() {
+        return this.langue.DireAuRevoir();
+    }
 }
+
 

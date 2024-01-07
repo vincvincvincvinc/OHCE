@@ -7,56 +7,133 @@ public class ConsoleApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Choose a language: ");
-        System.out.println("1. English");
-        System.out.println("2. Lithuanian");
-        int languageChoice = scanner.nextInt();
-        scanner.nextLine();  // Consume the newline character
+        start();
 
-        LangueInterface language;
-        if (languageChoice == 1) {
-            language = new LangueAnglaise(getTimeOfDay());
-        } else {
-            language = new LangueLituanienne(getTimeOfDay());
-        }
+        LangueInterface langue = choisirLangue();
+        MomentDeLaJournee moment = choisirTimeOfDay();
 
-        VerificationPalindrome verifier = new VerificationPalindrome(language, MomentDeLaJournee.Matin);
+        String greetingMessage = langue.Saluer();
+        System.out.println(greetingMessage);
 
-        saluer(language);
+        boolean exit = false;
 
-        while (true) {
-            System.out.print("Enter text (or 'exit' to quit): ");
+        VerificationPalindrome verifier = new VerificationPalindrome(langue, moment);
+
+        while (!exit) {
+            System.out.print("Entrez du texte (ou 'exit' pour quitter): ");
             String input = scanner.nextLine();
 
             if (input.equalsIgnoreCase("exit")) {
-                direAuRevoir(language);
-                break;
+                exit = true;
+            } else {
+                String result = verifier.verifier(input);
+                System.out.println(result);
             }
-
-            String result = verifier.verifier(input);
-            System.out.println(result);
         }
+
+        String goodbyeMessage = verifier.direAuRevoir();
+        System.out.println(goodbyeMessage);
 
         scanner.close();
     }
 
-    private static void saluer(LangueInterface language) {
-        System.out.println(language.Saluer());
-    }
-
-    private static void direAuRevoir(LangueInterface language) {
-        System.out.println(language.DireAuRevoir());
-    }
-
-    private static String getTimeOfDay() {
-        // You can use a more accurate way to determine the time of day if needed
-        // For simplicity, I'm using a hardcoded value here.
-        return "morning";
-    }
-
-    public static void start() {
+    static void start() {
         System.out.println("Program started...");
     }
 
+    private static LangueInterface choisirLangue() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Choisissez une langue: ");
+        System.out.println("1. Anglais");
+        System.out.println("2. Lituanien");
+        int langueChoix = scanner.nextInt();
+        scanner.nextLine();
+
+        if (langueChoix == 1) {
+            return new LangueAnglaise(getTimeOfDay());
+        } else {
+            return new LangueLituanienne(getTimeOfDay());
+        }
+    }
+
+    private static MomentDeLaJournee choisirTimeOfDay() {
+        return MomentDeLaJournee.Matin;
+    }
+
+    private static String getTimeOfDay() {
+        return "morning";
+    }
 }
 
+
+
+
+
+/*
+import java.util.Scanner;
+
+public class ConsoleApp {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        start();
+
+        LangueInterface langue = choisirLangue();
+        MomentDeLaJournee moment = choisirTimeOfDay();
+        VerificationPalindrome verifier = new VerificationPalindrome(langue, moment);
+
+        String greetingMessage = langue.Saluer();
+        System.out.println(greetingMessage);
+
+        boolean exit = false;
+
+        while (!exit) {
+            System.out.print("Entrez du texte (ou 'exit' pour quitter): ");
+            String input = scanner.nextLine();
+
+            if (input.equalsIgnoreCase("exit")) {
+                exit = true;
+            } else {
+                String result = verifier.verifier(input);
+                System.out.println(result);
+            }
+        }
+
+        String goodbyeMessage = verifier.direAuRevoir();
+        System.out.println(goodbyeMessage);
+
+        scanner.close();
+    }
+
+    static void start() {
+        System.out.println("Program started...");
+    }
+
+    private static LangueInterface choisirLangue() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Choisissez une langue: ");
+        System.out.println("1. Anglais");
+        System.out.println("2. Lituanien");
+        int langueChoix = scanner.nextInt();
+        scanner.nextLine();
+
+        if (langueChoix == 1) {
+            return new LangueAnglaise(getTimeOfDay());
+        } else {
+            return new LangueLituanienne(getTimeOfDay());
+        }
+    }
+
+
+    private static MomentDeLaJournee choisirTimeOfDay() {
+        return MomentDeLaJournee.Matin;
+    }
+
+    private static String getTimeOfDay() {
+        return "morning";
+    }
+}
+*/

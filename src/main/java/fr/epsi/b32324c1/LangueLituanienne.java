@@ -9,7 +9,7 @@ public class LangueLituanienne implements LangueInterface {
 
     @Override
     public String Féliciter() {
-        return Expressions.WellSaid;
+        return Expressions.Sveikinu;
     }
 
     @Override
@@ -32,13 +32,13 @@ public class LangueLituanienne implements LangueInterface {
     public String DireAuRevoir() {
         switch (period) {
             case "morning":
-                return "Viso gero, rytoj susitiksim";
+                return "Iki!";
             case "afternoon":
-                return "Viso gero, gero popietės";
+                return "Geros dienos";
             case "evening":
-                return "Viso gero, gero vakaro";
+                return "Gero vakaro";
             case "night":
-                return "Viso gero, gero nakties";
+                return "Labos nakties";
             default:
                 return Expressions.Goodbye;
         }
