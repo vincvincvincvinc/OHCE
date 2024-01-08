@@ -43,7 +43,7 @@ public class ConsoleApp {
         System.out.println("Program started...");
     }
 
-    private static LangueInterface choisirLangue() {
+    public static LangueInterface choisirLangue() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Choisissez une langue: ");
