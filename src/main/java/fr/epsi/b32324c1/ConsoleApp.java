@@ -39,7 +39,7 @@ public class ConsoleApp {
         scanner.close();
     }
 
-    static void start() {
+    public static void start() {
         System.out.println("Program started...");
     }
 
@@ -59,7 +59,7 @@ public class ConsoleApp {
         }
     }
 
-    private static MomentDeLaJournee choisirTimeOfDay() {
+    public static MomentDeLaJournee choisirTimeOfDay() {
         LocalTime currentTime = LocalTime.now();
 
         if (currentTime.isAfter(LocalTime.of(6,- 0)) && currentTime.isBefore(LocalTime.of(12, 0))) {

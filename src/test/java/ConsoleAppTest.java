@@ -1,13 +1,36 @@
 import fr.epsi.b32324c1.ConsoleApp;
 import fr.epsi.b32324c1.MomentDeLaJournee;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
+
 import static org.junit.jupiter.api.Assertions.*;
+
+import static org.mockito.Mockito.*;
+import java.time.LocalTime;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 public class ConsoleAppTest {
+
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
+
+    @BeforeEach
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outContent));
+    }
+
+    @AfterEach
+    public void restoreStreams() {
+        System.setOut(originalOut);
+    }
+
     @Test
-    public void start_ShoulPrintProgramStartedMessage() {
+    public void start_ShouldPrintProgramStartedMessage() {
         // Arrange
-        SystemCapture systemCapture = new SystemCapture();
-        systemCapture.startCapture();
 
         // Act
 
@@ -15,15 +38,12 @@ public class ConsoleAppTest {
 
         // Assert
 
-        assertEquals("Program started...", systemCapture.getCapturedOutput().trim());
-        systemCapture.stopCapture();
+        assertEquals("Program started...", outContent.toString().trim());
     }
+
 
     @Test
     public void choisirTimeOfDay_ShouldReturnCorrectMoment() {
-
-        // Arrange
-        // NEEDS DOING : Mock LocalTime
 
         // Act
 
@@ -34,6 +54,4 @@ public class ConsoleAppTest {
         assertNotNull(moment);
         assertTrue(moment instanceof MomentDeLaJournee);
     }
-
-    // More Tests
 }

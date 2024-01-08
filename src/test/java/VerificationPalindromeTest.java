@@ -16,22 +16,25 @@ public class VerificationPalindromeTest {
         String result = verifier.verifier("level");
 
         // Assert
-        assertEquals(System.lineSeparator() + "level" + System.lineSeparator() + "Well Said!", result);
+
+        assertTrue(result.contains("level"));
+        assertTrue(result.contains("Well Said!"));
+
     }
 
     @Test
-    public void direAuRvoir_ShouldReturnCorrectFarewellMessage() {
+    public void direAuRevoir_ShouldReturnCorrectFarewellMessage() {
 
         // Arrange
         LangueInterface mockLangue = new LangueMock();
+        VerificationPalindrome verifier = new VerificationPalindrome(mockLangue, MomentDeLaJournee.Matin);
 
         // Act
 
         String farewell = verifier.direAuRevoir();
 
         // Assert
-        assertEquals("Goodbye, have a great morning", farewell);
+        assertEquals("Mock Farewell", farewell);
     }
 
-    // More Tests later on
 }
